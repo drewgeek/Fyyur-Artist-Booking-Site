@@ -29,7 +29,8 @@ collections.Callable = collections.abc.Callable
 app = Flask(__name__)
 moment = Moment(app)
 app.config.from_object('config')
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
+db.init_app(app)
 migrate = Migrate(app,db)
 
 # TODO: connect to a local postgresql database
@@ -419,6 +420,9 @@ def create_artist_submission():
   # TODO: insert form data as a new Venue record in the db, instead
   # TODO: modify data to be the data object returned from db insertion
     # if not form :
+    print(form.seeking_venue.data)
+
+
     artist = Artist(
     name = form.name.data,
     city = form.city.data,
@@ -427,7 +431,7 @@ def create_artist_submission():
     genres = form.genres.data,
     image_link = form.image_link.data,
     facebook_link = form.facebook_link.data,
-    website = form.website.data,
+    website = form.website_link.data,
     seeking_venue = form.seeking_venue.data,
     seeking_description = form.seeking_description.data
       )
@@ -442,6 +446,11 @@ def create_artist_submission():
   #     flash('An error occurred. Artist ' + request.form['name'] + ' could not be listed.')
   #   return render_template('pages/home.html')
 
+#   on successful db insert, flash success
+# flash('Artist ' + request.form['name'] + ' was successfully listed!')
+#   # TODO: on unsuccessful db insert, flash an error instead.
+#   # e.g., flash('An error occurred. Artist ' + data.name + ' could not be listed.')
+#
 
 #  Shows
 #  ----------------------------------------------------------------
