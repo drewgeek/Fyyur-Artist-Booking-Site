@@ -198,7 +198,7 @@ def create_venue_submission():
   # TODO: on unsuccessful db insert, flash an error instead.
   # e.g., flash('An error occurred. Venue ' + data.name + ' could not be listed.')
   # see: http://flask.pocoo.org/docs/1.0/patterns/flashing/
-  return render_template('pages/home.html')
+    return render_template('pages/home.html')
 
 @app.route('/venues/<venue_id>', methods=['DELETE'])
 def delete_venue(venue_id):
@@ -439,12 +439,12 @@ def create_artist_submission():
     db.session.add(artist)
     db.session.commit()
   # on successful db insert, flash success
-  #     flash('Artist ' + request.form['name'] + ' was successfully listed!')
+    flash('Artist ' + request.form['name'] + ' was successfully listed!')
   # # TODO: on unsuccessful db insert, flash an error instead.
   # # e.g., flash('An error occurred. Artist ' + data.name + ' could not be listed.')
   #   else:
   #     flash('An error occurred. Artist ' + request.form['name'] + ' could not be listed.')
-  #   return render_template('pages/home.html')
+    return render_template('pages/home.html')
 
 #   on successful db insert, flash success
 # flash('Artist ' + request.form['name'] + ' was successfully listed!')
